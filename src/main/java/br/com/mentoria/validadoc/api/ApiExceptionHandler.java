@@ -17,6 +17,11 @@ import org.springframework.web.server.ResponseStatusException;
 
 @RestControllerAdvice
 public class ApiExceptionHandler {
+    @ExceptionHandler({org.springframework.http.converter.HttpMessageNotReadableException.class,
+        org.springframework.web.bind.MethodArgumentNotValidException.class})
+    ResponseEntity<Map<String, String>> invalidJson(Exception e) {
+        return error(HttpStatus.BAD_REQUEST, "JSON inválido. Informe nomeArquivo (até 180 caracteres), mimeType e texto (até 50000 caracteres) ou arquivo Base64 (até 10 MB). Não inclua campos desconhecidos.");
+    }
     private static final Logger LOG = LoggerFactory.getLogger(ApiExceptionHandler.class);
     @ExceptionHandler(IllegalArgumentException.class)
     ResponseEntity<Map<String, String>> invalid(IllegalArgumentException e) { return error(HttpStatus.BAD_REQUEST, e.getMessage()); }
@@ -31,7 +36,7 @@ public class ApiExceptionHandler {
     @ExceptionHandler(ResponseStatusException.class)
     ResponseEntity<Map<String, String>> status(ResponseStatusException e) { return ResponseEntity.status(e.getStatusCode()).body(Map.of("mensagem", ObjectsOrDefault(e.getReason()))); }
     @ExceptionHandler(HttpMediaTypeNotSupportedException.class)
-    ResponseEntity<Map<String, String>> unsupported(Exception e) { return error(HttpStatus.UNSUPPORTED_MEDIA_TYPE, "Envie o arquivo usando multipart/form-data."); }
+    ResponseEntity<Map<String, String>> unsupported(Exception e) { return error(HttpStatus.UNSUPPORTED_MEDIA_TYPE, "Use application/json em /api/documentos/validar ou multipart/form-data em /api/documentos."); }
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
     ResponseEntity<Map<String, String>> method(Exception e) { return error(HttpStatus.METHOD_NOT_ALLOWED, "Método HTTP não permitido para este endereço."); }
     @ExceptionHandler(NoResourceFoundException.class)

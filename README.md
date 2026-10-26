@@ -6,7 +6,7 @@ O modo padrão usa um extrator local por rótulos e não precisa de chave de IA.
 
 ## Atividade do semestre
 
-Referência: [orientações do professor Kleber Meira](https://github.com/KleberMeira/analise-documento-ia). Esta publicação reúne uma base funcional já desenvolvida; os próximos commits registrarão sua evolução. Ainda falta compatibilizar os endpoints JSON `/api/documentos/exemplo` e `/api/documentos/validar` com o contrato da referência. As diferenças e os próximos incrementos estão no [alinhamento da atividade](docs/ALINHAMENTO-ATIVIDADE.md).
+Referência: [orientações do professor Kleber Meira](https://github.com/KleberMeira/analise-documento-ia). A publicação inicial reuniu a base funcional já desenvolvida. O incremento seguinte adicionou os endpoints JSON `/api/documentos/exemplo` e `/api/documentos/validar`, com os campos de entrada e saída da referência. As diferenças de implementação e os próximos incrementos estão no [alinhamento da atividade](docs/ALINHAMENTO-ATIVIDADE.md).
 
 ## Rodar no Windows
 
@@ -148,9 +148,31 @@ Remove-Item Env:SPRING_PROFILES_ACTIVE -ErrorAction SilentlyContinue
 
 ## API e código
 
+### Contrato JSON do professor
+
+`GET /api/documentos/exemplo` retorna um payload pronto para enviar a `POST /api/documentos/validar`. A data de emissão da amostra é gerada no dia da consulta.
+
+```powershell
+$payload = Invoke-RestMethod 'http://localhost:8080/api/documentos/exemplo'
+$json = $payload | ConvertTo-Json
+Invoke-RestMethod 'http://localhost:8080/api/documentos/validar' -Method Post -ContentType 'application/json; charset=utf-8' -Body $json
+```
+
+O request aceita `nomeArquivo`, `mimeType`, `conteudoDocumento` e `imagemBase64`. Nome e MIME são obrigatórios. Envie texto, Base64 puro de um PDF/PNG/JPG, ou ambos; quando ambos são enviados, o arquivo tem prioridade e o texto é ignorado. Base64 inválido ou arquivo danificado retorna erro, sem substituir silenciosamente a entrada pelo texto. O tipo informado deve corresponder à assinatura do arquivo.
+
+O retorno contém `nomeArquivo`, `etapas`, `dadosExtraidos` e `resultado`. CPF é formatado e cidade inclui a UF quando encontrada, como no exemplo do professor. As etapas deixam explícito quando OpenCV/Tesseract não foram executados (entrada textual ou PDF com camada de texto) e quando a interpretação usou regras locais em vez de IA. Documento reprovado retorna HTTP 200 com pendências; JSON ou entrada inválida retorna HTTP 400.
+
+Esse contrato didático confere presença de nome, CPF, endereço, cidade e emissão até 90 dias, inclusive. Também reprova data futura e confiança OCR abaixo de 60%, quando aplicável. Não exige `nomeEsperado`, não confere titularidade e não exige UF isolada. O endpoint JSON é uma análise sem persistência: não adiciona registros ao histórico da interface. O envio multipart da tela mantém suas regras mais estritas e seu histórico.
+
+Limites: texto de até 50.000 caracteres, nome de até 180 caracteres, arquivo decodificado de até 10 MB, PDF de até 5 páginas e imagem de até 20 milhões de pixels. Não envie prefixo `data:` no Base64.
+
+### Rotas disponíveis
+
 | Método e rota | Função |
 | --- | --- |
 | `GET /api/config` | Modo de extração e limites da aplicação. |
+| `GET /api/documentos/exemplo` | Payload JSON fictício no contrato do professor. |
+| `POST /api/documentos/validar` | Valida texto/arquivo Base64 e retorna etapas, campos e resultado. |
 | `POST /api/documentos` | Upload `multipart/form-data` com `arquivo` e `nomeEsperado`. |
 | `GET /api/documentos` | Lista os 100 resultados mais recentes. |
 | `GET /api/documentos/{id}` | Consulta um resultado pelo UUID. |
@@ -181,7 +203,7 @@ src/test/java/  Testes automatizados
 
 ## Verificação
 
-Verificado em 26/10/2026: 62 testes automatizados aprovados, além do fluxo no navegador em desktop e celular. A verificação pela tela cobriu PDF aprovado, titular divergente reprovado, PNG lido por OCR, histórico e formato inválido. A integração OpenAI foi testada com um servidor simulado local, sem usar uma chave real.
+Verificado em 26/10/2026: 74 testes automatizados aprovados, incluindo 12 casos para o contrato JSON do professor e OCR real de imagem Base64. O fluxo original também foi verificado no navegador em desktop e celular, cobrindo PDF aprovado, titular divergente reprovado, PNG lido por OCR, histórico e formato inválido. A integração OpenAI foi testada com um servidor simulado local, sem usar uma chave real.
 
 Para preparar as dependências e executar os testes sem iniciar o servidor:
 
