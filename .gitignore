@@ -1,0 +1,11 @@
+target/
+.tools/
+data/
+.env
+*.log
+.idea/
+.vscode/
+*.iml
+artifacts/
+entrega/
+node_modules/

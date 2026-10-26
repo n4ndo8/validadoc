@@ -1,0 +1,33 @@
+server:
+  address: ${SERVER_ADDRESS:127.0.0.1}
+  port: ${PORT:8080}
+  error:
+    include-message: never
+spring:
+  application:
+    name: validadoc
+  datasource:
+    url: jdbc:h2:file:./data/validadoc;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password: ''
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 11MB
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: true
+app:
+  extraction-mode: ${EXTRACTION_MODE:LOCAL}
+  ocr:
+    tessdata: ${TESSDATA_PATH:./.tools/tessdata}
+  validation:
+    max-age-days: 90
+  openai:
+    api-key: ${OPENAI_API_KEY:}
+    model: ${OPENAI_MODEL:gpt-4o-mini}
+    url: https://api.openai.com/v1/responses
