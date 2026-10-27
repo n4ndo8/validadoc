@@ -1,0 +1,58 @@
+# Evolução semanal — ValidaDoc
+
+## Ponto de partida
+
+O objetivo da atividade é acompanhar o desenvolvimento e o aprendizado ao longo do semestre. A implementação inicial foi adiantada com assistência de IA e publicada em 26/10/2026. Ela é um protótipo para estudo e revisão, não evidência de evolução semanal anterior.
+
+Em 27/10/2026, foi organizado este plano. A branch `prototipo-inicial` preserva o commit `1fea34ee34d6d949e2107a5bc57bbd4767374674`. O histórico permanece disponível. A `main` continua com a base funcional; não houve remoção de funcionalidades nem reconstrução de datas de commits.
+
+Este é um planejamento proposto, a ajustar ao calendário e às orientações do professor. Não há datas de entrega presumidas nem execução automática das próximas etapas.
+
+## Ciclos propostos
+
+| Ciclo | Objetivo | Trabalho real a realizar | Evidência para apresentar |
+| --- | --- | --- | --- |
+| Próxima aula | Entender e revisar o ponto de partida | Rodar a aplicação, explicar controller → service → extrator → validador, comparar os dois contratos HTTP e anotar dúvidas sobre versões/regras com o professor | Notas de estudo próprias e decisões da aula; corrigir somente o que for identificado |
+| Semana seguinte | Melhorar a extração local | Selecionar amostras fictícias com layouts diferentes, identificar falhas reproduzíveis e corrigir um caso de cada vez | Amostra de falha, teste que falha antes e passa depois, explicação da mudança |
+| Ciclo 3 | Verificar persistência real | Executar com PostgreSQL, validar persistência após reinício e tratar problemas encontrados | Teste de integração ou roteiro reproduzível e registro do resultado; serviço ainda não foi validado |
+| Ciclo 4 | Avaliar qualidade do OCR | Comparar imagens fictícias nítidas, inclinadas e com baixo contraste; escolher uma melhoria baseada nos resultados | Comparação antes/depois e limites observados; correção automática de rotação ainda não existe |
+| Ciclo 5 | Validar integração com IA | Se houver chave e autorização de uso, testar com amostras fictícias; conferir campos, erros de serviço e custo. Sem chave, aprimorar testes simulados a partir de falhas identificadas | Resultados reais separados dos simulados, sem publicar chave ou dados pessoais |
+| Ciclo final, a definir | Consolidar a entrega | Revisar requisitos com o professor, resolver pendências selecionadas e preparar apresentação do código compreendido | Checklist de requisitos, testes, limitações e demonstração pelo aluno |
+
+Não é necessário implementar todos os itens desta proposta. O professor pode priorizar outros pontos. Funcionalidades já existentes não devem ser reapresentadas como novas para preencher semanas.
+
+## Como registrar cada avanço
+
+1. Escolher um problema ou melhoria pequena e escrever o resultado esperado.
+2. Entender os arquivos envolvidos antes de alterá-los.
+3. Fazer a mudança e verificar o comportamento relevante.
+4. Criar um commit descritivo quando houver uma alteração real. Um estudo pode gerar documentação real, mas não exige commit vazio.
+5. Registrar abaixo o que foi aprendido, o que foi testado e o que permanece pendente.
+
+Não deixar mudanças prontas escondidas para publicá-las como se tivessem sido desenvolvidas depois. Datas e autoria dos registros devem refletir o trabalho efetivo.
+
+## Registro de acompanhamento
+
+### 27/10/2026 — Organização do acompanhamento
+
+- Protótipo existente preservado em uma branch de referência.
+- README esclarece o estado da base e a assistência de IA na preparação inicial.
+- Plano semanal proposto, sujeito à revisão em aula.
+- Nenhuma nova funcionalidade implementada nesta etapa.
+- Próxima ação: executar o exemplo JSON e explicar o caminho até a decisão de aprovação, anotando dúvidas para o professor.
+
+### Modelo para os próximos registros
+
+Copiar somente quando a atividade ocorrer e preencher com o resultado real:
+
+```text
+Data:
+Objetivo:
+O que estudei e consigo explicar:
+Problema identificado:
+Alteração realizada (se houver):
+Verificação e resultado:
+Commit ou PR (se houver):
+Dúvidas para a aula:
+Próximo passo:
+```

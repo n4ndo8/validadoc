@@ -6,6 +6,8 @@ O modo padrão usa um extrator local por rótulos e não precisa de chave de IA.
 
 ## Atividade do semestre
 
+**Estado atual: protótipo inicial, em revisão para desenvolvimento acompanhado.** A base foi produzida com assistência de IA e publicada de uma vez; isso não representa várias semanas de trabalho. A versão existente foi preservada na branch [`prototipo-inicial`](https://github.com/n4ndo8/validadoc/tree/prototipo-inicial). O [plano de evolução semanal](docs/EVOLUCAO-SEMANAL.md) organiza a compreensão do código, a revisão com o professor e melhorias que ainda precisam ser realizadas.
+
 Referência: [orientações do professor Kleber Meira](https://github.com/KleberMeira/analise-documento-ia). A publicação inicial reuniu a base funcional já desenvolvida. O incremento seguinte adicionou os endpoints JSON `/api/documentos/exemplo` e `/api/documentos/validar`, com os campos de entrada e saída da referência. As diferenças de implementação e os próximos incrementos estão no [alinhamento da atividade](docs/ALINHAMENTO-ATIVIDADE.md).
 
 ## Rodar no Windows
