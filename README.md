@@ -72,7 +72,7 @@ flowchart LR
 
 O PDFBox decide a leitura por página, permitindo PDFs mistos. Nas imagens, OpenCV aplica escala de cinza, redução de ruído e binarização. Tesseract reconhece o texto em português. O extrator transforma esse texto em `nome`, `cpf`, `endereco`, `cidade`, `estado` e `dataEmissao`; campos ausentes ou conflitantes ficam `null`.
 
-No modo `LOCAL`, o documento precisa ter rótulos reconhecíveis, como `Nome:`, `CPF:`, `Endereço:`, `Cidade:`, `Estado:` e `Data de emissão:`. Também há suporte a variações como `Titular:`, `Município:`, `UF:`, `Cidade/UF:` e uma linha `Recife - PE`. As datas locais aceitas são `dd/MM/aaaa` e `aaaa-MM-dd`, com calendário estrito. A data de vencimento não substitui a emissão. Layouts arbitrários e campos sem rótulo não têm interpretação garantida.
+No modo `LOCAL`, o documento precisa ter rótulos reconhecíveis, como `Nome:`, `CPF:`, `Endereço:`, `Cidade:`, `Estado:` e `Data de emissão:`. Também há suporte a variações como `Titular:`, `Município:`, `UF:`, `Cidade/UF:` e uma linha `Recife - PE`. As datas locais aceitas são `dd/MM/aaaa`, `dd-MM-aaaa` e `aaaa-MM-dd`, com calendário estrito. Separadores misturados, como `29-10/2026`, são rejeitados. A data de vencimento não substitui a emissão. Layouts arbitrários e campos sem rótulo não têm interpretação garantida.
 
 ## Regras de aprovação
 
@@ -124,7 +124,7 @@ $env:OPENAI_MODEL = 'gpt-4o-mini'
 
 Esse modo depende de uma chave válida, acesso ao modelo, conexão e disponibilidade de créditos na conta. A integração real com a OpenAI não está incluída na verificação local sem essas credenciais. Falha de API gera um erro explícito; não há aprovação simulada nem troca silenciosa para o modo local.
 
-Para voltar ao extrator sem IA, encerre a aplicação e defina `$env:EXTRACTION_MODE = 'LOCAL'` antes de iniciar novamente. A conferência de evidência do modo IA também reconhece emissão presente no texto em `dd-MM-aaaa`; o extrator local continua limitado aos formatos descritos acima.
+Para voltar ao extrator sem IA, encerre a aplicação e defina `$env:EXTRACTION_MODE = 'LOCAL'` antes de iniciar novamente. Tanto o extrator local quanto a conferência de evidência do modo IA reconhecem emissão em `dd-MM-aaaa`.
 
 ### PostgreSQL opcional
 
@@ -204,6 +204,8 @@ src/test/java/  Testes automatizados
 ```
 
 ## Verificação
+
+Em 29/10/2026, a suíte completa passou com **78 testes**, após a inclusão do suporte a datas brasileiras com hífen. O teste de regressão reproduziu a falha antes da correção. Veja o [registro da evolução](docs/EVOLUCAO-SEMANAL.md).
 
 Verificado em 26/10/2026: 74 testes automatizados aprovados, incluindo 12 casos para o contrato JSON do professor e OCR real de imagem Base64. O fluxo original também foi verificado no navegador em desktop e celular, cobrindo PDF aprovado, titular divergente reprovado, PNG lido por OCR, histórico e formato inválido. A integração OpenAI foi testada com um servidor simulado local, sem usar uma chave real.
 

@@ -24,7 +24,7 @@ public class LocalFieldExtractor {
     private static final int FLAGS = Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE;
     private static final DateTimeFormatter BR_DATE = DateTimeFormatter.ofPattern("dd/MM/uuuu")
             .withResolverStyle(ResolverStyle.STRICT);
-    private static final Pattern DATE = Pattern.compile("(?<!\\d)(\\d{2}/\\d{2}/\\d{4}|\\d{4}-\\d{2}-\\d{2})(?!\\d)");
+    private static final Pattern DATE = Pattern.compile("(?<!\\d)(\\d{2}/\\d{2}/\\d{4}|\\d{2}-\\d{2}-\\d{4}|\\d{4}-\\d{2}-\\d{2})(?!\\d)");
     private static final Pattern LABELED_CPF = Pattern.compile(
             "(?<![\\p{L}\\d])CPF(?:\\s*/\\s*CNPJ)?\\s*:?\\s*(\\d{3}[.\\s]?\\d{3}[.\\s]?\\d{3}[-\\s]?\\d{2})(?!\\d)", FLAGS);
     private static final Pattern FORMATTED_CPF = Pattern.compile(
@@ -119,7 +119,9 @@ public class LocalFieldExtractor {
                 LocalDate candidate;
                 try {
                     String date = matcher.group(1);
-                    candidate = date.contains("/") ? LocalDate.parse(date, BR_DATE) : LocalDate.parse(date);
+                    // ISO começa pelo ano; os dois formatos brasileiros usam o mesmo calendário estrito.
+                    candidate = date.charAt(4) == '-' ? LocalDate.parse(date)
+                            : LocalDate.parse(date.replace('-', '/'), BR_DATE);
                 } catch (DateTimeParseException ex) {
                     return null;
                 }

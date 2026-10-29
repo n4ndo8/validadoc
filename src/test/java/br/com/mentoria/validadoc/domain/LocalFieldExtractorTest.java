@@ -13,6 +13,33 @@ class LocalFieldExtractorTest {
     private final LocalFieldExtractor extractor = new LocalFieldExtractor();
 
     @Test
+    void acceptsBrazilianEmissionDateWithHyphens() {
+        assertEquals(LocalDate.of(2026, 10, 29),
+                extractor.extract("Data de emissão: 29-10-2026").dataEmissao());
+        assertEquals(LocalDate.of(2024, 2, 29),
+                extractor.extract("Emissão: 29-02-2024").dataEmissao());
+    }
+
+    @Test
+    void rejectsImpossibleAndMixedSeparatorDates() {
+        for (String date : new String[]{"31-02-2026", "29-02-2025", "29-10/2026", "29/10-2026"}) {
+            assertNull(extractor.extract("Emissão: " + date).dataEmissao(), date);
+        }
+    }
+
+    @Test
+    void comparesRepeatedDatesAcrossAllSupportedFormats() {
+        assertEquals(LocalDate.of(2026, 10, 29), extractor.extract(
+                "Emissão: 29-10-2026\nData de emissão: 29/10/2026\nEmitido em: 2026-10-29").dataEmissao());
+        assertNull(extractor.extract("Emissão: 29-10-2026\nEmissão: 28/10/2026").dataEmissao());
+    }
+
+    @Test
+    void doesNotUseHyphenatedDueDateAsEmissionDate() {
+        assertNull(extractor.extract("Vencimento: 29-10-2026").dataEmissao());
+    }
+
+    @Test
     void extractsTheLabeledPortugueseDocumentFromTheReference() {
         DadosDocumento result = extractor.extract("""
                 COMPROVANTE DE RESIDÊNCIA

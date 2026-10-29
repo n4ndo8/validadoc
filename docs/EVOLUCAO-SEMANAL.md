@@ -41,6 +41,18 @@ Não deixar mudanças prontas escondidas para publicá-las como se tivessem sido
 - Nenhuma nova funcionalidade implementada nesta etapa.
 - Próxima ação: executar o exemplo JSON e explicar o caminho até a decisão de aprovação, anotando dúvidas para o professor.
 
+### 29/10/2026 — Data de emissão brasileira com hífen
+
+- Problema reproduzido: `Data de emissão: 29-10-2026` retornava `null` no extrator local, embora a regra de evidência já reconhecesse essa representação.
+- Foram adicionados quatro testes. Antes da correção, dois falharam: extração com hífen e repetição da mesma data em formatos diferentes.
+- Correção em `LocalFieldExtractor`: reconhecer `dd-MM-aaaa`, distinguir o formato ISO e normalizar o separador brasileiro antes da conversão estrita em `LocalDate`.
+- Verificação após a correção: suíte completa com 78 testes aprovados, sem falhas ou testes ignorados (`mvn test`).
+- Casos cobertos: data válida, ano bissexto, dia impossível, separadores misturados, datas equivalentes ou conflitantes e vencimento que não deve ser interpretado como emissão.
+- Trabalho realizado com assistência de IA. Este registro descreve a alteração técnica; a compreensão pelo aluno deve ser praticada na explicação abaixo.
+- Para explicar na aula: a expressão regular reconhece o formato; `LocalDate` verifica se o dia existe no calendário. Aceitar outro separador não significa aceitar qualquer data.
+- Exercício de compreensão: explicar por que `29-02-2024` é válido e `29-02-2025` não, e localizar no código a distinção entre formato brasileiro e ISO.
+- Próximo passo: revisar esta mudança e levar dúvidas à aula antes de escolher outra melhoria.
+
 ### Modelo para os próximos registros
 
 Copiar somente quando a atividade ocorrer e preencher com o resultado real:
