@@ -10,12 +10,12 @@ Mostre a tela de envio, os formatos permitidos e o campo obrigatório de titular
 
 ## 2. Mostre o fluxo completo — 1 minuto
 
-1. Clique em **Baixar exemplo**. O documento é fictício e tem data de emissão atual.
+1. Clique em **Testar com exemplo**. O documento é fictício e tem data de emissão atual.
 2. Preencha o titular com **Ana Silva**.
 3. Envie o PDF e processe.
 4. Mostre os campos extraídos e cada regra avaliada.
 5. Abra **Ver texto extraído do documento** e compare o texto com os campos.
-6. Abra **Meus envios** e consulte o registro salvo.
+6. Abra **Histórico** e consulte o registro salvo.
 
 “Este PDF tem texto selecionável, então o PDFBox consegue fazer a leitura direta. Quando recebemos uma imagem ou uma página digitalizada, entra o fluxo de OCR.”
 

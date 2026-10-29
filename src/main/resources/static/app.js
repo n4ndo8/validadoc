@@ -78,7 +78,7 @@
       else link.removeAttribute('aria-current');
     });
     closeMenu();
-    document.title = ({ documentos: 'Conferir meu documento', envios: 'Meus envios', resultados: 'Resultados', detalhe: 'Resultado da validação', ajuda: 'Como funciona' }[selected]) + ' · ValidaDoc';
+    document.title = ({ documentos: 'Nova missão', envios: 'Histórico de missões', resultados: 'Resultados', detalhe: 'Resultado da validação', ajuda: 'Como funciona' }[selected]) + ' · ValidaDoc';
   }
 
   async function route() {

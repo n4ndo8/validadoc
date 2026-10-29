@@ -2,7 +2,7 @@
 
 Assistente pessoal para conferir um comprovante de residência antes de usá-lo em um cadastro. A pessoa envia PDF/PNG/JPG, vê os dados que foram lidos e entende quais pontos precisam de atenção. Inclui OCR com OpenCV/Tesseract, regras em Java e histórico local. A conferência não comprova autenticidade nem garante aceitação por outra instituição.
 
-A identidade visual foi escolhida para uso pessoal: violeta nas ações, verde-água na leitura, coral nas orientações e textos diretos. O projeto continua sendo desenvolvido na mentoria, com os mesmos endpoints e critérios de validação.
+A identidade visual segue a direção escolhida por Fernando Andrade: programação e jogos, com uma central de missões, navegação no topo e uma área de envio inspirada em um editor de código. Os checkpoints representam as etapas da conferência; os resultados continuam sendo avaliações reais dos documentos. O projeto continua sendo desenvolvido na mentoria, com os mesmos endpoints e critérios de validação.
 
 O modo padrão usa um extrator local por rótulos e não precisa de chave de IA. Há integração opcional com a OpenAI e perfil PostgreSQL. O código da aplicação fica em [`src`](src).
 
@@ -42,11 +42,11 @@ Nesse caso, abra `http://localhost:8081`.
 
 ## Demonstrar em um minuto
 
-1. Na tela inicial, clique em **Baixar exemplo**.
-2. Informe **Ana Silva** no campo **Nome do titular**.
+1. Na tela **Nova missão**, clique em **Testar com exemplo**.
+2. Informe **Ana Silva** no campo **Seu nome completo**.
 3. Selecione o PDF baixado e clique em **Conferir meu documento**.
 4. Confira os campos, as regras avaliadas e o texto extraído.
-5. Abra **Meus envios** para consultar o resultado novamente.
+5. Abra **Histórico** para consultar o resultado novamente.
 
 O exemplo é fictício, identificado como tal e gerado com a data atual. Para demonstrar uma reprovação, envie o mesmo arquivo informando outro titular. O PDF de exemplo contém texto selecionável: nesse caso a leitura é feita pelo PDFBox. PNG, JPG e páginas digitalizadas usam OpenCV e Tesseract.
 

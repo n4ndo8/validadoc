@@ -71,6 +71,15 @@ Não deixar mudanças prontas escondidas para publicá-las como se tivessem sido
 - Verificação: JavaScript validado, aplicação empacotada e teste no navegador com PDF aprovado, titular divergente, OCR real de PNG, histórico, arquivo inválido e ajuda. Layout conferido em desktop e celular, sem erros JavaScript.
 - Implementação com assistência de IA a partir da preferência expressa pelo aluno. Próxima revisão: o aluno experimentar a tela e indicar o que corresponde ou não à identidade desejada.
 
+### 29/10/2026 — Central de missões: programação e jogos
+
+- Após experimentar a primeira personalização, Fernando escolheu uma identidade ligada a programação e jogos, com sua assinatura no projeto.
+- O menu lateral de desktop foi substituído pela navegação superior. A tela inicial apresenta um checkpoint ilustrado em SVG, etapas da missão e uma área de envio inspirada em um editor.
+- Histórico, resultados e ajuda seguem a mesma identidade. Os controles continuam explícitos e os resultados não recebem pontuações ou recompensas fictícias.
+- Verificação: JavaScript validado, empacotamento concluído e fluxo de navegador aprovado para PDF, OCR de imagem, titular divergente, histórico, arquivo inválido e ajuda.
+- Revisadas cinco telas em cinco larguras (320 a 1536 px). Corrigido o transbordamento do nome do método de extração no relatório; as 25 combinações passaram, assim como a navegação e o fechamento do menu com Escape.
+- Implementação com assistência de IA. Para estudar: localizar a estrutura em `index.html`, o tema em `personal.css` e a atualização da etapa ativa em `app.js`.
+
 ### Modelo para os próximos registros
 
 Copiar somente quando a atividade ocorrer e preencher com o resultado real:

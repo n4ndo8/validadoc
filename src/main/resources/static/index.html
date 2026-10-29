@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#6843d9">
+  <meta name="theme-color" content="#101217">
   <meta name="description" content="Confira seu comprovante de residência e entenda o que precisa de atenção antes de usá-lo.">
-  <title>ValidaDoc · Validação de documentos</title>
+  <title>ValidaDoc · Fernando Andrade</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="/personal.css">
@@ -37,55 +37,78 @@
   </svg>
 
   <a class="skip-link" href="#main-content">Pular para o conteúdo</a>
-  <aside class="sidebar" id="sidebar" aria-label="Menu principal">
+  <header class="sidebar" id="sidebar" aria-label="Menu principal">
     <a class="brand" href="#documentos" aria-label="ValidaDoc, página inicial">
-      <svg class="brand-mark" viewBox="0 0 40 44" fill="none" aria-hidden="true"><path d="m20 2 17 10v20L20 42 3 32V12z"/><path d="m11 22 6 6 13-14"/></svg>
-      <span>valida<span class="brand-light">doc</span><small>CONFIRA. ENTENDA. RESOLVA.</small></span>
+      <span class="brand-code" aria-hidden="true">&lt;v/&gt;</span>
+      <span>valida<span class="brand-light">doc</span><small>FERNANDO ANDRADE / LAB</small></span>
     </a>
-    <div class="sidebar-section">SEU ESPAÇO</div>
-    <nav class="navigation">
-      <a class="nav-item active" href="#documentos" data-view="documentos" aria-current="page"><svg><use href="#i-document"/></svg><span>Conferir documento</span><span class="nav-active-dot"></span></a>
-      <a class="nav-item" href="#envios" data-view="envios"><svg><use href="#i-inbox"/></svg><span>Meus envios</span><span id="history-count" class="nav-count">0</span></a>
-      <a class="nav-item" href="#resultados" data-view="resultados"><svg><use href="#i-chart"/></svg><span>Resultados</span></a>
+    <nav class="navigation" aria-label="Documentos">
+      <a class="nav-item active" href="#documentos" data-view="documentos" aria-current="page"><span class="nav-index">01</span><span>Nova missão</span><span class="nav-active-dot"></span></a>
+      <a class="nav-item" href="#envios" data-view="envios"><span class="nav-index">02</span><span>Histórico</span><span id="history-count" class="nav-count">0</span></a>
+      <a class="nav-item" href="#resultados" data-view="resultados"><span class="nav-index">03</span><span>Resultados</span></a>
     </nav>
-    <div class="sidebar-section secondary-label">APOIO</div>
-    <nav class="navigation"><a class="nav-item" href="#ajuda" data-view="ajuda"><svg><use href="#i-help"/></svg><span>Como funciona</span></a></nav>
-    <div class="sidebar-tip"><span class="tip-icon"><svg><use href="#i-shield"/></svg></span><strong>Uma dúvida a menos.</strong><p>Confira os dados e veja o que precisa de atenção.</p></div>
-    <div class="sidebar-user"><div class="avatar">DV</div><div><strong>Seu espaço pessoal</strong><span>Um documento por vez</span></div></div>
-  </aside>
+    <nav class="navigation support-navigation" aria-label="Ajuda"><a class="nav-item" href="#ajuda" data-view="ajuda"><svg><use href="#i-code"/></svg><span>Como funciona</span></a></nav>
+    <div class="creator-mark"><span aria-hidden="true">FA_</span><span>Um projeto de<br><strong>Fernando Andrade</strong></span></div>
+  </header>
   <button class="sidebar-scrim" id="sidebar-scrim" aria-label="Fechar menu" hidden></button>
 
   <div class="workspace">
     <header class="topbar">
       <button id="menu-button" class="icon-button menu-button" aria-label="Abrir menu" aria-expanded="false" aria-controls="sidebar"><svg><use href="#i-menu"/></svg></button>
-      <div class="workspace-title"><strong>SEUS DOCUMENTOS, MAIS SIMPLES</strong><span>Uma ajuda antes do próximo cadastro</span></div>
-      <div class="topbar-right"><span class="environment"><span></span>Ambiente local</span><div class="avatar small">VD</div></div>
+      <div class="workspace-title"><strong>VALIDADOC / CENTRAL DE MISSÕES</strong><span>Fernando Andrade · Personal lab</span></div>
+      <div class="topbar-right"><span class="environment"><span></span>Ambiente local</span><div class="avatar small">FA</div></div>
     </header>
 
     <main id="main-content" tabindex="-1">
       <div id="global-alert" class="alert alert-error" role="alert" hidden><svg><use href="#i-info"/></svg><span id="alert-text"></span><button class="icon-button" id="dismiss-alert" aria-label="Fechar aviso"><svg><use href="#i-x"/></svg></button></div>
 
       <section id="view-documentos" class="view">
-        <div class="page-heading"><div><div class="eyebrow">UMA CONFERÊNCIA PARA VOCÊ</div><h1>Confira antes de enviar<span class="heading-dot">.</span></h1><p>Seu comprovante está legível e atualizado? Veja os dados encontrados e o que precisa de atenção.</p></div><a href="/api/exemplo.pdf" class="button button-sample" download><svg><use href="#i-download"/></svg>Baixar exemplo</a></div>
+        <div class="mission-hero">
+          <div class="mission-intro">
+            <div class="eyebrow"><span class="pixel-cross" aria-hidden="true">✦</span> PROGRAMAÇÃO NA BASE. UM POUCO DE JOGO NO CAMINHO.</div>
+            <h1>Seu próximo<br><span>checkpoint.</span><span class="cursor-block" aria-hidden="true"></span></h1>
+            <p>Antes do próximo cadastro, uma missão simples: conferir seu comprovante e descobrir o que precisa de atenção.</p>
+            <div class="hero-bottom"><span class="mission-label">MISSÃO 01 <span>/</span> COMPROVANTE DE RESIDÊNCIA</span><a href="/api/exemplo.pdf" class="button button-sample" download><svg><use href="#i-download"/></svg>Testar com exemplo</a></div>
+          </div>
+          <div class="checkpoint-art" aria-hidden="true">
+            <div class="art-corner">FA / CHECKPOINT</div>
+            <svg viewBox="0 0 320 240" class="checkpoint-illustration">
+              <path class="art-orbit" d="M25 160 160 220 295 160 160 100Z"/>
+              <path class="art-platform" d="m65 167 95 43 95-43-95-43z"/>
+              <path class="art-platform-edge" d="m65 167 95 43 95-43v12l-95 43-95-43z"/>
+              <path class="art-file-shadow" d="m111 52 83-19 27 31v108l-110 24z"/>
+              <path class="art-file" d="m99 42 83-19 27 31v108L99 186z"/>
+              <path class="art-fold" d="m182 23 0 37 27-6"/>
+              <path class="art-lines" d="m120 78 39-9m-39 25 66-15m-66 31 54-12m-54 28 34-8"/>
+              <path class="art-check" d="m153 140 13 9 29-39"/>
+              <path class="art-flagpole" d="M250 147V56"/>
+              <path class="art-flag" d="M250 56h43l-10 13 10 13h-43z"/>
+              <path class="art-spark" d="M59 64v20M49 74h20M267 106v12M261 112h12"/>
+              <path class="art-pixel" d="M37 118h9v9h-9zM222 29h7v7h-7z"/>
+            </svg>
+            <div class="art-caption"><span>LOAD → CHECK → NEXT</span><span>01 / 04</span></div>
+          </div>
+        </div>
 
+        <div class="section-caption"><span>ROTA DA MISSÃO</span><span>DO ARQUIVO AO RESULTADO</span></div>
         <ol class="steps" aria-label="Etapas da validação">
-          <li class="step current" id="step-1"><span class="step-number">1</span><div><strong>Escolha</strong><span>Envio do documento</span></div></li>
-          <li class="step" id="step-2"><span class="step-number">2</span><div><strong>Leitura</strong><span>Leitura e extração</span></div></li>
-          <li class="step" id="step-3"><span class="step-number">3</span><div><strong>Conferência</strong><span>Dados e data de emissão</span></div></li>
-          <li class="step" id="step-4"><span class="step-number">4</span><div><strong>Resultado</strong><span>Entenda o resultado</span></div></li>
+          <li class="step current" id="step-1"><span class="step-number">1</span><div><strong>Carregar</strong><span>Escolha seu arquivo</span></div></li>
+          <li class="step" id="step-2"><span class="step-number">2</span><div><strong>Ler</strong><span>Texto e informações</span></div></li>
+          <li class="step" id="step-3"><span class="step-number">3</span><div><strong>Conferir</strong><span>Dados e data de emissão</span></div></li>
+          <li class="step" id="step-4"><span class="step-number">4</span><div><strong>Resultado</strong><span>Seu próximo passo</span></div></li>
         </ol>
 
         <p class="scope-note"><svg aria-hidden="true"><use href="#i-info"/></svg>Por enquanto, conferimos comprovantes de residência. Cada instituição pode exigir critérios diferentes.</p>
         <div class="upload-layout">
           <form id="upload-form" class="panel upload-panel">
-            <div class="panel-heading"><h2>Vamos conferir seu comprovante?</h2><span class="subtle-tag">PASSO 01</span></div>
+            <div class="workbench-bar"><span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span><span>nova-missão / comprovante</span><svg aria-hidden="true"><use href="#i-code"/></svg></div><div class="panel-heading"><div><span class="eyebrow">SEU PONTO DE PARTIDA</span><h2>Carregue seu documento.</h2></div><span class="subtle-tag">01 / INPUT</span></div>
             <div class="form-grid"><div class="field"><label for="document-type">Tipo de documento</label><div class="select-wrap"><svg><use href="#i-document"/></svg><select id="document-type" name="tipo"><option>Comprovante de residência</option></select></div></div><div class="field"><label for="expected-name">Seu nome completo <span class="required">*</span></label><input id="expected-name" name="nomeEsperado" autocomplete="name" placeholder="Nome completo que consta no documento" maxlength="150" required aria-describedby="name-hint"><small id="name-hint">Vamos comparar com o nome que aparece no comprovante.</small></div></div>
 
             <input id="file-input" type="file" accept=".pdf,.png,.jpg,.jpeg,application/pdf,image/png,image/jpeg" hidden>
             <div id="dropzone" class="dropzone" role="button" tabindex="0" aria-label="Selecionar arquivo PDF, PNG ou JPG de até 10 megabytes">
               <div class="upload-symbol"><svg><use href="#i-upload"/></svg><span class="upload-spark spark-one"></span><span class="upload-spark spark-two"></span></div>
-              <strong>Clique para selecionar ou arraste o arquivo aqui</strong><span class="dropzone-description">PDF, PNG ou JPG <span>·</span> Até <span data-max-size>10</span> MB</span>
-              <span class="button button-primary choose-file">Selecionar arquivo<svg><use href="#i-arrow"/></svg></span>
+              <strong>Solte seu arquivo aqui.</strong><span class="dropzone-description">PDF, PNG ou JPG <span>·</span> Até <span data-max-size>10</span> MB</span>
+              <span class="button button-primary choose-file">Escolher arquivo<svg><use href="#i-arrow"/></svg></span>
               <small>Seu documento deve estar completo e legível.</small>
             </div>
 
@@ -96,8 +119,8 @@
           </form>
 
           <aside class="guidance" aria-label="Orientações para o envio">
-            <section class="panel examples-panel"><h2>O que você pode enviar</h2><p class="panel-description">Exemplos de comprovantes de residência</p><div class="example-item"><span class="example-icon"><svg><use href="#i-home"/></svg></span><div><strong>Conta de água</strong><span>COMPESA, SABESP, COPASA, etc.</span></div></div><div class="example-item"><span class="example-icon"><svg><use href="#i-sun"/></svg></span><div><strong>Conta de luz</strong><span>Neoenergia, ENEL, CEMIG, etc.</span></div></div><div class="example-item"><span class="example-icon"><svg><use href="#i-phone"/></svg></span><div><strong>Conta de telefone</strong><span>Vivo, Claro, TIM, etc.</span></div></div><div class="example-item"><span class="example-icon"><svg><use href="#i-card"/></svg></span><div><strong>Fatura de cartão</strong><span>Do seu banco ou operadora.</span></div></div></section>
-            <section class="panel tips-panel"><h2>Para uma boa leitura</h2><ul class="tips-list"><li><span class="check-dot"><svg><use href="#i-check"/></svg></span>Imagem nítida e sem cortes</li><li><span class="check-dot"><svg><use href="#i-check"/></svg></span>Documento inteiro e legível</li><li><span class="check-dot"><svg><use href="#i-check"/></svg></span>Sem reflexos ou sombras</li><li><span class="check-dot"><svg><use href="#i-check"/></svg></span>Texto visível e alinhado</li><li><span class="check-dot"><svg><use href="#i-check"/></svg></span>PDF com até <span data-max-pages>5</span> páginas</li></ul></section>
+            <section class="panel examples-panel"><h2>Escolha seu item</h2><p class="panel-description">Exemplos de comprovantes de residência</p><div class="example-item"><span class="example-icon"><svg><use href="#i-home"/></svg></span><div><strong>Conta de água</strong><span>COMPESA, SABESP, COPASA, etc.</span></div></div><div class="example-item"><span class="example-icon"><svg><use href="#i-sun"/></svg></span><div><strong>Conta de luz</strong><span>Neoenergia, ENEL, CEMIG, etc.</span></div></div><div class="example-item"><span class="example-icon"><svg><use href="#i-phone"/></svg></span><div><strong>Conta de telefone</strong><span>Vivo, Claro, TIM, etc.</span></div></div><div class="example-item"><span class="example-icon"><svg><use href="#i-card"/></svg></span><div><strong>Fatura de cartão</strong><span>Do seu banco ou operadora.</span></div></div></section>
+            <section class="panel tips-panel"><h2>Checklist da missão</h2><ul class="tips-list"><li><span class="check-dot"><svg><use href="#i-check"/></svg></span>Imagem nítida e sem cortes</li><li><span class="check-dot"><svg><use href="#i-check"/></svg></span>Documento inteiro e legível</li><li><span class="check-dot"><svg><use href="#i-check"/></svg></span>Sem reflexos ou sombras</li><li><span class="check-dot"><svg><use href="#i-check"/></svg></span>Texto visível e alinhado</li><li><span class="check-dot"><svg><use href="#i-check"/></svg></span>PDF com até <span data-max-pages>5</span> páginas</li></ul></section>
             <section class="important-note"><svg><use href="#i-info"/></svg><div><h2>Fique de olho na data</h2><p>Use um documento emitido há até <strong><span data-max-age>90</span> dias</strong> e no nome do titular informado.</p></div></section>
           </aside>
         </div>
@@ -105,19 +128,19 @@
       </section>
 
       <section id="view-envios" class="view" hidden>
-        <div class="page-heading"><div><div class="eyebrow">DOCUMENTOS <span>/</span> HISTÓRICO</div><h1>Meus envios<span class="heading-dot">.</span></h1><p>Seus documentos e os resultados de cada análise.</p></div><button class="button button-primary" data-go-upload>Novo envio<svg><use href="#i-arrow"/></svg></button></div>
+        <div class="page-heading"><div><div class="eyebrow">DOCUMENTOS <span>/</span> HISTÓRICO</div><h1>Registro de missões<span class="heading-dot">.</span></h1><p>Seus documentos e os resultados de cada análise.</p></div><button class="button button-primary" data-go-upload>Nova missão<svg><use href="#i-arrow"/></svg></button></div>
         <div class="panel history-panel"><div class="history-toolbar"><h2>Últimos envios <span id="history-total" class="count-pill">0</span></h2><button class="button button-secondary button-compact" id="refresh-history"><svg><use href="#i-refresh"/></svg>Atualizar</button></div><div id="history-content"></div></div>
       </section>
 
       <section id="view-resultados" class="view" hidden>
-        <div class="page-heading"><div><div class="eyebrow">DOCUMENTOS <span>/</span> ACOMPANHAMENTO</div><h1>Resultados<span class="heading-dot">.</span></h1><p>Uma visão geral das últimas validações realizadas.</p></div><button class="button button-primary" data-go-upload>Novo envio<svg><use href="#i-arrow"/></svg></button></div>
+        <div class="page-heading"><div><div class="eyebrow">DOCUMENTOS <span>/</span> ACOMPANHAMENTO</div><h1>Resultados<span class="heading-dot">.</span></h1><p>Uma visão geral das últimas validações realizadas.</p></div><button class="button button-primary" data-go-upload>Nova missão<svg><use href="#i-arrow"/></svg></button></div>
         <div class="stats-grid"><div class="panel stat-card"><span class="stat-icon"><svg><use href="#i-document"/></svg></span><div><span>Documentos analisados</span><strong id="stat-total">0</strong></div></div><div class="panel stat-card"><span class="stat-icon success"><svg><use href="#i-check"/></svg></span><div><span>Aprovados</span><strong id="stat-approved">0</strong></div></div><div class="panel stat-card"><span class="stat-icon danger"><svg><use href="#i-x"/></svg></span><div><span>Reprovados</span><strong id="stat-rejected">0</strong></div></div></div>
         <div class="panel history-panel"><div class="history-toolbar"><h2>Validações recentes</h2><span class="table-caption">Até 100 envios</span></div><div id="results-content"></div></div>
       </section>
 
       <section id="view-detalhe" class="view" hidden>
         <button id="back-to-history" class="back-link"><svg><use href="#i-arrow"/></svg>Voltar para meus envios</button>
-        <div class="page-heading"><div><div class="eyebrow">DOCUMENTOS <span>/</span> ANÁLISE CONCLUÍDA</div><h1>Sua conferência<span class="heading-dot">.</span></h1><p id="result-file-caption"></p></div><button class="button button-primary" data-go-upload>Enviar outro documento<svg><use href="#i-arrow"/></svg></button></div>
+        <div class="page-heading"><div><div class="eyebrow">DOCUMENTOS <span>/</span> ANÁLISE CONCLUÍDA</div><h1>Relatório da missão<span class="heading-dot">.</span></h1><p id="result-file-caption"></p></div><button class="button button-primary" data-go-upload>Nova missão<svg><use href="#i-arrow"/></svg></button></div>
         <div id="result-banner" class="result-banner"><div class="result-status-icon"><svg><use id="result-status-icon" href="#i-check"/></svg></div><div><span class="eyebrow">RESULTADO</span><h2 id="result-status-title"></h2><p id="result-status-description"></p></div><span class="result-date" id="result-date"></span></div>
         <div id="result-warnings" class="result-warnings" hidden></div>
         <div class="detail-grid"><section class="panel detail-panel"><div class="panel-heading"><h2>Informações extraídas</h2><span id="extraction-method" class="subtle-tag"></span></div><dl id="extracted-data" class="data-list"></dl></section><section class="panel detail-panel"><div class="panel-heading"><h2>Regras verificadas</h2><span id="rules-count" class="subtle-tag"></span></div><ul id="validation-rules" class="validation-rules"></ul></section></div>
@@ -126,13 +149,13 @@
       </section>
 
       <section id="view-ajuda" class="view" hidden>
-        <div class="page-heading"><div><div class="eyebrow">APOIO <span>/</span> COMO FUNCIONA</div><h1>Do arquivo ao resultado<span class="heading-dot">.</span></h1><p>Entenda o que conferimos e como ler o resultado.</p></div><a class="button button-sample" href="/api/exemplo.pdf" download><svg><use href="#i-download"/></svg>Baixar exemplo</a></div>
+        <div class="page-heading"><div><div class="eyebrow">APOIO <span>/</span> COMO FUNCIONA</div><h1>Do arquivo ao resultado<span class="heading-dot">.</span></h1><p>Entenda o que conferimos e como ler o resultado.</p></div><a class="button button-sample" href="/api/exemplo.pdf" download><svg><use href="#i-download"/></svg>Testar com exemplo</a></div>
         <div class="panel help-intro"><span class="help-intro-icon"><svg><use href="#i-shield"/></svg></span><div><h2>Você envia. A gente ajuda a conferir.</h2><p>Conferimos os dados encontrados, a data de emissão e o nome informado. O resultado fica no histórico deste computador para você consultar.</p></div></div>
         <div class="architecture-grid"><article class="panel architecture-card"><span>01</span><h2>Documento</h2><p>Você envia um PDF, PNG ou JPG e informa o nome do titular. O servidor verifica o formato e os limites.</p><strong>Escolha</strong></article><article class="panel architecture-card"><span>02</span><h2>Leitura</h2><p>OpenCV prepara as imagens e Tesseract reconhece o texto. PDFs com texto selecionável podem ser lidos diretamente.</p><strong>OpenCV + Tesseract</strong></article><article class="panel architecture-card"><span>03</span><h2>Extração</h2><p>O texto é organizado em campos: nome, CPF, endereço, cidade, UF e emissão. Campos não encontrados ficam vazios.</p><strong id="help-extraction-mode">Extrator local</strong></article><article class="panel architecture-card"><span>04</span><h2>Validação</h2><p>Java confere os campos, a data de emissão e o nome informado. O resultado e as regras são salvos no banco.</p><strong>Spring Boot + banco</strong></article></div>
-        <div class="help-grid"><section class="panel help-panel"><h2>Teste em três passos</h2><ol class="numbered-list"><li>Baixe o comprovante fictício pelo botão <strong>Baixar exemplo</strong>.</li><li>Em <strong>Conferir documento</strong>, informe <strong>Ana Silva</strong> como titular e selecione o PDF.</li><li>Clique em <strong>Conferir meu documento</strong> e confira os dados e as regras do resultado.</li></ol></section><section class="panel help-panel"><h2>Antes de enviar</h2><p>O documento precisa trazer nome, CPF, endereço e uma data de emissão recente. Informe o nome completo do titular para a comparação.</p><p>Uma reprovação mostra o que não passou na conferência. Confira a leitura, envie uma imagem mais nítida ou use um comprovante recente. Não altere os dados do documento original.</p></section></div>
+        <div class="help-grid"><section class="panel help-panel"><h2>Teste em três passos</h2><ol class="numbered-list"><li>Baixe o comprovante fictício pelo botão <strong>Testar com exemplo</strong>.</li><li>Em <strong>Nova missão</strong>, informe <strong>Ana Silva</strong> como titular e selecione o PDF.</li><li>Clique em <strong>Conferir meu documento</strong> e confira os dados e as regras do resultado.</li></ol></section><section class="panel help-panel"><h2>Antes de enviar</h2><p>O documento precisa trazer nome, CPF, endereço e uma data de emissão recente. Informe o nome completo do titular para a comparação.</p><p>Uma reprovação mostra o que não passou na conferência. Confira a leitura, envie uma imagem mais nítida ou use um comprovante recente. Não altere os dados do documento original.</p></section></div>
         <section class="panel help-panel mode-panel"><div><span class="subtle-tag">CONFIGURAÇÃO ATUAL</span><h2 id="mode-title">Carregando configuração…</h2><p id="mode-description">Consultando o serviço de validação.</p></div><span class="mode-chip" id="mode-chip">—</span></section>
       </section>
-      <footer class="page-footer"><span>ValidaDoc <span>·</span> Seu assistente de documentos</span><span>Projeto acadêmico · Uso pessoal</span></footer>
+      <footer class="page-footer"><span><b>&lt;fa/&gt;</b> Fernando Andrade <span>·</span> ValidaDoc</span><span>Feito de código, curiosidade e checkpoints. <span class="footer-academic">Projeto acadêmico.</span></span></footer>
     </main>
   </div>
 </body>
