@@ -25,8 +25,9 @@ public class LocalFieldExtractor {
     private static final DateTimeFormatter BR_DATE = DateTimeFormatter.ofPattern("dd/MM/uuuu")
             .withResolverStyle(ResolverStyle.STRICT);
     private static final Pattern DATE = Pattern.compile("(?<!\\d)(\\d{2}/\\d{2}/\\d{4}|\\d{2}-\\d{2}-\\d{4}|\\d{4}-\\d{2}-\\d{2})(?!\\d)");
+    private static final String CPF_LABEL = "CPF(?:\\s*/\\s*CNPJ)?";
     private static final Pattern LABELED_CPF = Pattern.compile(
-            "(?<![\\p{L}\\d])CPF(?:\\s*/\\s*CNPJ)?\\s*:?\\s*(\\d{3}[.\\s]?\\d{3}[.\\s]?\\d{3}[-\\s]?\\d{2})(?!\\d)", FLAGS);
+            "(?<![\\p{L}\\d])" + CPF_LABEL + "\\s*:?\\s*(\\d{3}[.\\s]?\\d{3}[.\\s]?\\d{3}[-\\s]?\\d{2})(?!\\d)", FLAGS);
     private static final Pattern FORMATTED_CPF = Pattern.compile(
             "(?<![\\d.])\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}(?![\\d/])");
     private static final Pattern CITY_STATE = Pattern.compile(
@@ -40,7 +41,7 @@ public class LocalFieldExtractor {
     private static final Set<String> MISSING_VALUES = Set.of("-", "n/a", "null", "nao informado",
             "nao informada", "nao consta", "nao encontrado", "nao encontrada", "ilegivel", "sem informacao");
     private static final Pattern INLINE_LABEL = Pattern.compile(
-            "[\\t ]+(?=(?:" + NAME_LABEL + "|CPF|" + ADDRESS_LABEL + "|" + CITY_STATE_LABEL
+            "[\\t ]+(?=(?:" + NAME_LABEL + "|" + CPF_LABEL + "|" + ADDRESS_LABEL + "|" + CITY_STATE_LABEL
                     + "|" + CITY_LABEL + "|" + STATE_LABEL + "|" + DATE_LABEL + ")\\s*[:=])", FLAGS);
 
     public DadosDocumento extract(String text) {

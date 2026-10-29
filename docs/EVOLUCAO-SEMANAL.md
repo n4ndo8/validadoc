@@ -53,6 +53,15 @@ Não deixar mudanças prontas escondidas para publicá-las como se tivessem sido
 - Exercício de compreensão: explicar por que `29-02-2024` é válido e `29-02-2025` não, e localizar no código a distinção entre formato brasileiro e ISO.
 - Próximo passo: revisar esta mudança e levar dúvidas à aula antes de escolher outra melhoria.
 
+### 29/10/2026 — Separação do rótulo CPF/CNPJ na mesma linha
+
+- Problema reproduzido: em `Nome: Ana Silva CPF/CNPJ: 12345678900`, o nome extraído incluía o rótulo e o número. O CPF era reconhecido, mas a separação dos campos não reconhecia o rótulo compartilhado.
+- Três testes novos falharam antes da correção: CPF completo, rótulo com espaços (`CPF / CNPJ`) contendo CNPJ e CPF mascarado.
+- Correção: extrair a definição de `CPF_LABEL` para uma constante reutilizada tanto na leitura do CPF quanto na separação de campos na mesma linha.
+- Verificação após a correção: suíte completa com 81 testes aprovados, sem falhas ou testes ignorados (`mvn test`).
+- A leitura de CPF continua exigindo 11 dígitos: CNPJ de 14 dígitos e CPF mascarado permanecem ausentes, enquanto o nome é preservado corretamente.
+- Trabalho realizado com assistência de IA. Ponto para estudar: reconhecer um rótulo e validar seu valor são tarefas diferentes; a mesma definição de rótulo deve ser usada pelas duas etapas.
+
 ### Modelo para os próximos registros
 
 Copiar somente quando a atividade ocorrer e preencher com o resultado real:

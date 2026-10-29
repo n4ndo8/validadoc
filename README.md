@@ -76,6 +76,8 @@ No modo `LOCAL`, o documento precisa ter rótulos reconhecíveis, como `Nome:`, 
 
 ## Regras de aprovação
 
+O rótulo compartilhado `CPF/CNPJ:` também é reconhecido junto a outros campos na mesma linha, por exemplo `Nome: Ana Silva CPF/CNPJ: 12345678900`. A extração separa o nome do rótulo e continua aceitando apenas CPF completo com 11 dígitos; CNPJ de 14 dígitos ou CPF mascarado não são convertidos em CPF.
+
 Todas as regras aplicáveis precisam passar. A decisão significa que o documento atende aos critérios deste exercício.
 
 | Regra | Critério |
@@ -204,6 +206,8 @@ src/test/java/  Testes automatizados
 ```
 
 ## Verificação
+
+Na segunda melhoria de 29/10/2026, a suíte completa passou com **81 testes**, após corrigir a separação do rótulo `CPF/CNPJ` na mesma linha do nome. Os três testes novos reproduziram o problema antes da correção.
 
 Em 29/10/2026, a suíte completa passou com **78 testes**, após a inclusão do suporte a datas brasileiras com hífen. O teste de regressão reproduziu a falha antes da correção. Veja o [registro da evolução](docs/EVOLUCAO-SEMANAL.md).
 

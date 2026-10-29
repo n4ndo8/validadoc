@@ -13,6 +13,28 @@ class LocalFieldExtractorTest {
     private final LocalFieldExtractor extractor = new LocalFieldExtractor();
 
     @Test
+    void separatesInlineSharedCpfCnpjLabelFromOwnerName() {
+        DadosDocumento result = extractor.extract("Nome: Ana Silva CPF/CNPJ: 12345678900 Cidade: Recife");
+        assertEquals("Ana Silva", result.nome());
+        assertEquals("12345678900", result.cpf());
+        assertEquals("Recife", result.cidade());
+    }
+
+    @Test
+    void separatesSpacedSharedLabelWithoutTruncatingCnpj() {
+        DadosDocumento result = extractor.extract("Nome: Ana Silva CPF / CNPJ: 12345678000190");
+        assertEquals("Ana Silva", result.nome());
+        assertNull(result.cpf());
+    }
+
+    @Test
+    void preservesOwnerNameWhenInlineCpfIsMasked() {
+        DadosDocumento result = extractor.extract("Titular: Ana Silva cpf/cnpj: ***.456.789-**");
+        assertEquals("Ana Silva", result.nome());
+        assertNull(result.cpf());
+    }
+
+    @Test
     void acceptsBrazilianEmissionDateWithHyphens() {
         assertEquals(LocalDate.of(2026, 10, 29),
                 extractor.extract("Data de emissão: 29-10-2026").dataEmissao());
