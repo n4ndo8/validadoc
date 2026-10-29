@@ -78,7 +78,7 @@
       else link.removeAttribute('aria-current');
     });
     closeMenu();
-    document.title = ({ documentos: 'Enviar comprovante', envios: 'Meus envios', resultados: 'Resultados', detalhe: 'Resultado da validação', ajuda: 'Como funciona' }[selected]) + ' · ValidaDoc';
+    document.title = ({ documentos: 'Conferir meu documento', envios: 'Meus envios', resultados: 'Resultados', detalhe: 'Resultado da validação', ajuda: 'Como funciona' }[selected]) + ' · ValidaDoc';
   }
 
   async function route() {
@@ -198,7 +198,7 @@
     $('dropzone').setAttribute('aria-disabled', String(busy));
     $('dropzone').tabIndex = busy ? -1 : 0;
     ['expected-name', 'document-type', 'file-input', 'remove-file', 'cancel-button'].forEach((id) => { $(id).disabled = busy; });
-    $('process-button').replaceChildren(document.createTextNode(busy ? 'Processando…' : 'Processar documento'));
+    $('process-button').replaceChildren(document.createTextNode(busy ? 'Processando…' : 'Conferir meu documento'));
     // Uma só requisição executa o fluxo: a interface não presume a etapa interna do servidor.
     if (!busy) $('process-button').append(icon('arrow'));
     for (let index = 1; index <= 4; index++) {
@@ -355,8 +355,8 @@
     $('result-status-icon').setAttribute('href', approved ? '#i-check' : '#i-x');
     $('result-status-title').textContent = approved ? 'Documento aprovado' : 'Documento reprovado';
     $('result-status-description').textContent = approved
-      ? 'Os dados encontrados atendem às regras de validação do projeto.'
-      : 'Algumas regras não foram atendidas. Confira os detalhes abaixo.';
+      ? 'Seu comprovante passou nas verificações do ValidaDoc. Veja abaixo os dados que conseguimos ler.'
+      : 'Encontramos pontos que precisam de atenção. Veja quais dados faltaram ou não passaram na conferência.';
     $('result-date').textContent = dateTime(result.criadoEm);
     $('extraction-method').textContent = result.metodoExtracao || 'EXTRAÇÃO';
     $('extraction-method').title = result.metodoExtracao || '';

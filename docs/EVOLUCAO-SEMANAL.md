@@ -62,6 +62,15 @@ Não deixar mudanças prontas escondidas para publicá-las como se tivessem sido
 - A leitura de CPF continua exigindo 11 dígitos: CNPJ de 14 dígitos e CPF mascarado permanecem ausentes, enquanto o nome é preservado corretamente.
 - Trabalho realizado com assistência de IA. Ponto para estudar: reconhecer um rótulo e validar seu valor são tarefas diferentes; a mesma definição de rótulo deve ser usada pelas duas etapas.
 
+### 29/10/2026 — Identidade para uso pessoal
+
+- Decisão do aluno: direcionar o ValidaDoc a uma pessoa conferindo seus próprios documentos, com visual mais colorido.
+- Interface adaptada com violeta, verde-água, amarelo e coral; orientações pessoais substituem o cabeçalho institucional de mentoria.
+- A ação principal passa a ser “Conferir meu documento”. O escopo de comprovantes de residência e os limites da conferência ficam visíveis.
+- Mantidos os contratos HTTP, as regras de negócio e o nome ValidaDoc. A ferramenta não garante aceitação do comprovante por terceiros.
+- Verificação: JavaScript validado, aplicação empacotada e teste no navegador com PDF aprovado, titular divergente, OCR real de PNG, histórico, arquivo inválido e ajuda. Layout conferido em desktop e celular, sem erros JavaScript.
+- Implementação com assistência de IA a partir da preferência expressa pelo aluno. Próxima revisão: o aluno experimentar a tela e indicar o que corresponde ou não à identidade desejada.
+
 ### Modelo para os próximos registros
 
 Copiar somente quando a atividade ocorrer e preencher com o resultado real:

@@ -3,11 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#ff5800">
-  <meta name="description" content="Envie e acompanhe a validação de comprovantes de residência. Projeto de mentoria com Java, OpenCV e Tesseract.">
+  <meta name="theme-color" content="#6843d9">
+  <meta name="description" content="Confira seu comprovante de residência e entenda o que precisa de atenção antes de usá-lo.">
   <title>ValidaDoc · Validação de documentos</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/personal.css">
   <script src="/app.js" defer></script>
 </head>
 <body>
@@ -39,25 +40,25 @@
   <aside class="sidebar" id="sidebar" aria-label="Menu principal">
     <a class="brand" href="#documentos" aria-label="ValidaDoc, página inicial">
       <svg class="brand-mark" viewBox="0 0 40 44" fill="none" aria-hidden="true"><path d="m20 2 17 10v20L20 42 3 32V12z"/><path d="m11 22 6 6 13-14"/></svg>
-      <span>valida<span class="brand-light">doc</span><small>DOCUMENTOS EM DIA.</small></span>
+      <span>valida<span class="brand-light">doc</span><small>CONFIRA. ENTENDA. RESOLVA.</small></span>
     </a>
-    <div class="sidebar-section">ÁREA DE TRABALHO</div>
+    <div class="sidebar-section">SEU ESPAÇO</div>
     <nav class="navigation">
-      <a class="nav-item active" href="#documentos" data-view="documentos" aria-current="page"><svg><use href="#i-document"/></svg><span>Documentos</span><span class="nav-active-dot"></span></a>
+      <a class="nav-item active" href="#documentos" data-view="documentos" aria-current="page"><svg><use href="#i-document"/></svg><span>Conferir documento</span><span class="nav-active-dot"></span></a>
       <a class="nav-item" href="#envios" data-view="envios"><svg><use href="#i-inbox"/></svg><span>Meus envios</span><span id="history-count" class="nav-count">0</span></a>
       <a class="nav-item" href="#resultados" data-view="resultados"><svg><use href="#i-chart"/></svg><span>Resultados</span></a>
     </nav>
     <div class="sidebar-section secondary-label">APOIO</div>
     <nav class="navigation"><a class="nav-item" href="#ajuda" data-view="ajuda"><svg><use href="#i-help"/></svg><span>Como funciona</span></a></nav>
-    <div class="sidebar-tip"><span class="tip-icon"><svg><use href="#i-shield"/></svg></span><strong>Do envio à resposta.</strong><p>Acompanhe cada documento em um só lugar.</p></div>
-    <div class="sidebar-user"><div class="avatar">DV</div><div><strong>Projeto de mentoria</strong><span>Java + Spring Boot</span></div></div>
+    <div class="sidebar-tip"><span class="tip-icon"><svg><use href="#i-shield"/></svg></span><strong>Uma dúvida a menos.</strong><p>Confira os dados e veja o que precisa de atenção.</p></div>
+    <div class="sidebar-user"><div class="avatar">DV</div><div><strong>Seu espaço pessoal</strong><span>Um documento por vez</span></div></div>
   </aside>
   <button class="sidebar-scrim" id="sidebar-scrim" aria-label="Fechar menu" hidden></button>
 
   <div class="workspace">
     <header class="topbar">
       <button id="menu-button" class="icon-button menu-button" aria-label="Abrir menu" aria-expanded="false" aria-controls="sidebar"><svg><use href="#i-menu"/></svg></button>
-      <div class="workspace-title"><strong>MENTORIA 2026.2</strong><span>Recife · Residência tecnológica</span></div>
+      <div class="workspace-title"><strong>SEUS DOCUMENTOS, MAIS SIMPLES</strong><span>Uma ajuda antes do próximo cadastro</span></div>
       <div class="topbar-right"><span class="environment"><span></span>Ambiente local</span><div class="avatar small">VD</div></div>
     </header>
 
@@ -65,19 +66,20 @@
       <div id="global-alert" class="alert alert-error" role="alert" hidden><svg><use href="#i-info"/></svg><span id="alert-text"></span><button class="icon-button" id="dismiss-alert" aria-label="Fechar aviso"><svg><use href="#i-x"/></svg></button></div>
 
       <section id="view-documentos" class="view">
-        <div class="page-heading"><div><div class="eyebrow">DOCUMENTOS <span>/</span> NOVO ENVIO</div><h1>Enviar comprovante<span class="heading-dot">.</span></h1><p>Envie seu documento. A gente cuida da leitura e da validação.</p></div><a href="/api/exemplo.pdf" class="button button-sample" download><svg><use href="#i-download"/></svg>Baixar exemplo</a></div>
+        <div class="page-heading"><div><div class="eyebrow">UMA CONFERÊNCIA PARA VOCÊ</div><h1>Confira antes de enviar<span class="heading-dot">.</span></h1><p>Seu comprovante está legível e atualizado? Veja os dados encontrados e o que precisa de atenção.</p></div><a href="/api/exemplo.pdf" class="button button-sample" download><svg><use href="#i-download"/></svg>Baixar exemplo</a></div>
 
         <ol class="steps" aria-label="Etapas da validação">
-          <li class="step current" id="step-1"><span class="step-number">1</span><div><strong>Upload</strong><span>Envio do documento</span></div></li>
-          <li class="step" id="step-2"><span class="step-number">2</span><div><strong>Processamento</strong><span>Leitura e extração</span></div></li>
-          <li class="step" id="step-3"><span class="step-number">3</span><div><strong>Validação</strong><span>Regras de negócio</span></div></li>
-          <li class="step" id="step-4"><span class="step-number">4</span><div><strong>Resultado</strong><span>Aprovado ou reprovado</span></div></li>
+          <li class="step current" id="step-1"><span class="step-number">1</span><div><strong>Escolha</strong><span>Envio do documento</span></div></li>
+          <li class="step" id="step-2"><span class="step-number">2</span><div><strong>Leitura</strong><span>Leitura e extração</span></div></li>
+          <li class="step" id="step-3"><span class="step-number">3</span><div><strong>Conferência</strong><span>Dados e data de emissão</span></div></li>
+          <li class="step" id="step-4"><span class="step-number">4</span><div><strong>Resultado</strong><span>Entenda o resultado</span></div></li>
         </ol>
 
+        <p class="scope-note"><svg aria-hidden="true"><use href="#i-info"/></svg>Por enquanto, conferimos comprovantes de residência. Cada instituição pode exigir critérios diferentes.</p>
         <div class="upload-layout">
           <form id="upload-form" class="panel upload-panel">
-            <div class="panel-heading"><h2>Selecione o documento</h2><span class="subtle-tag">PASSO 01</span></div>
-            <div class="form-grid"><div class="field"><label for="document-type">Tipo de documento</label><div class="select-wrap"><svg><use href="#i-document"/></svg><select id="document-type" name="tipo"><option>Comprovante de residência</option></select></div></div><div class="field"><label for="expected-name">Nome do titular <span class="required">*</span></label><input id="expected-name" name="nomeEsperado" autocomplete="name" placeholder="Nome completo que consta no documento" maxlength="150" required aria-describedby="name-hint"><small id="name-hint">Usaremos este nome para conferir a titularidade.</small></div></div>
+            <div class="panel-heading"><h2>Vamos conferir seu comprovante?</h2><span class="subtle-tag">PASSO 01</span></div>
+            <div class="form-grid"><div class="field"><label for="document-type">Tipo de documento</label><div class="select-wrap"><svg><use href="#i-document"/></svg><select id="document-type" name="tipo"><option>Comprovante de residência</option></select></div></div><div class="field"><label for="expected-name">Seu nome completo <span class="required">*</span></label><input id="expected-name" name="nomeEsperado" autocomplete="name" placeholder="Nome completo que consta no documento" maxlength="150" required aria-describedby="name-hint"><small id="name-hint">Vamos comparar com o nome que aparece no comprovante.</small></div></div>
 
             <input id="file-input" type="file" accept=".pdf,.png,.jpg,.jpeg,application/pdf,image/png,image/jpeg" hidden>
             <div id="dropzone" class="dropzone" role="button" tabindex="0" aria-label="Selecionar arquivo PDF, PNG ou JPG de até 10 megabytes">
@@ -90,7 +92,7 @@
             <div id="selected-file" class="selected-file" hidden><div class="file-icon"><svg><use href="#i-document"/></svg></div><div class="file-description"><strong id="file-name"></strong><span id="file-size"></span></div><span class="loaded-status"><span class="check-dot"><svg><use href="#i-check"/></svg></span>Pronto para enviar</span><button type="button" id="remove-file" class="icon-button" aria-label="Remover arquivo selecionado"><svg><use href="#i-x"/></svg></button></div>
             <details id="file-preview" class="file-preview" hidden><summary>Visualizar imagem selecionada</summary><img id="preview-image" alt="Prévia do comprovante selecionado"></details>
             <div id="processing-notice" class="processing-notice" role="status" hidden><span class="spinner"></span><div><strong>Processando seu documento…</strong><span>Estamos lendo o arquivo e aplicando as regras. Aguarde a resposta do servidor.</span></div></div>
-            <div class="form-footer"><span class="privacy-note"><svg><use href="#i-shield"/></svg>Validação pelas regras do projeto</span><div class="form-actions"><button class="button button-secondary" id="cancel-button" type="button">Cancelar</button><button class="button button-primary" id="process-button" type="submit" disabled>Processar documento<svg><use href="#i-arrow"/></svg></button></div></div>
+            <div class="form-footer"><span class="privacy-note"><svg><use href="#i-shield"/></svg>Conferência automática de dados</span><div class="form-actions"><button class="button button-secondary" id="cancel-button" type="button">Cancelar</button><button class="button button-primary" id="process-button" type="submit" disabled>Conferir meu documento<svg><use href="#i-arrow"/></svg></button></div></div>
           </form>
 
           <aside class="guidance" aria-label="Orientações para o envio">
@@ -99,7 +101,7 @@
             <section class="important-note"><svg><use href="#i-info"/></svg><div><h2>Fique de olho na data</h2><p>Use um documento emitido há até <strong><span data-max-age>90</span> dias</strong> e no nome do titular informado.</p></div></section>
           </aside>
         </div>
-        <div class="sample-note"><span class="sample-note-icon"><svg><use href="#i-code"/></svg></span><p><strong>Vai apresentar o projeto?</strong> Baixe o exemplo e informe <b>Ana Silva</b> como titular. É um documento fictício para testar o fluxo.</p></div>
+        <div class="sample-note"><span class="sample-note-icon"><svg><use href="#i-code"/></svg></span><p><strong>Quer experimentar primeiro?</strong> Baixe o exemplo e informe <b>Ana Silva</b> como titular. É uma amostra fictícia para conhecer a ferramenta.</p></div>
       </section>
 
       <section id="view-envios" class="view" hidden>
@@ -115,22 +117,22 @@
 
       <section id="view-detalhe" class="view" hidden>
         <button id="back-to-history" class="back-link"><svg><use href="#i-arrow"/></svg>Voltar para meus envios</button>
-        <div class="page-heading"><div><div class="eyebrow">DOCUMENTOS <span>/</span> ANÁLISE CONCLUÍDA</div><h1>Resultado da validação<span class="heading-dot">.</span></h1><p id="result-file-caption"></p></div><button class="button button-primary" data-go-upload>Enviar outro documento<svg><use href="#i-arrow"/></svg></button></div>
+        <div class="page-heading"><div><div class="eyebrow">DOCUMENTOS <span>/</span> ANÁLISE CONCLUÍDA</div><h1>Sua conferência<span class="heading-dot">.</span></h1><p id="result-file-caption"></p></div><button class="button button-primary" data-go-upload>Enviar outro documento<svg><use href="#i-arrow"/></svg></button></div>
         <div id="result-banner" class="result-banner"><div class="result-status-icon"><svg><use id="result-status-icon" href="#i-check"/></svg></div><div><span class="eyebrow">RESULTADO</span><h2 id="result-status-title"></h2><p id="result-status-description"></p></div><span class="result-date" id="result-date"></span></div>
         <div id="result-warnings" class="result-warnings" hidden></div>
         <div class="detail-grid"><section class="panel detail-panel"><div class="panel-heading"><h2>Informações extraídas</h2><span id="extraction-method" class="subtle-tag"></span></div><dl id="extracted-data" class="data-list"></dl></section><section class="panel detail-panel"><div class="panel-heading"><h2>Regras verificadas</h2><span id="rules-count" class="subtle-tag"></span></div><ul id="validation-rules" class="validation-rules"></ul></section></div>
         <details class="panel extracted-text"><summary><svg><use href="#i-code"/></svg>Ver texto extraído do documento<span>OCR / PDF</span></summary><pre id="raw-text"></pre></details>
-        <p class="result-footnote"><svg><use href="#i-info"/></svg>A aprovação indica atendimento às regras deste projeto. Ela não comprova a autenticidade do documento.</p>
+        <p class="result-footnote"><svg><use href="#i-info"/></svg>Esta conferência segue as regras do ValidaDoc. Não comprova autenticidade nem garante aceitação por empresas ou instituições.</p>
       </section>
 
       <section id="view-ajuda" class="view" hidden>
-        <div class="page-heading"><div><div class="eyebrow">APOIO <span>/</span> COMO FUNCIONA</div><h1>Do arquivo ao resultado<span class="heading-dot">.</span></h1><p>Conheça o caminho do seu documento e prepare uma boa demonstração.</p></div><a class="button button-sample" href="/api/exemplo.pdf" download><svg><use href="#i-download"/></svg>Baixar exemplo</a></div>
-        <div class="panel help-intro"><span class="help-intro-icon"><svg><use href="#i-shield"/></svg></span><div><h2>Uma validação, etapas bem definidas.</h2><p>O sistema lê o documento, organiza as informações e aplica as regras no Java. Cada resultado fica disponível no histórico.</p></div></div>
-        <div class="architecture-grid"><article class="panel architecture-card"><span>01</span><h2>Documento</h2><p>Você envia um PDF, PNG ou JPG e informa o nome do titular. O servidor verifica o formato e os limites.</p><strong>Upload</strong></article><article class="panel architecture-card"><span>02</span><h2>Leitura</h2><p>OpenCV prepara as imagens e Tesseract reconhece o texto. PDFs com texto selecionável podem ser lidos diretamente.</p><strong>OpenCV + Tesseract</strong></article><article class="panel architecture-card"><span>03</span><h2>Extração</h2><p>O texto é organizado em campos: nome, CPF, endereço, cidade, UF e emissão. Campos não encontrados ficam vazios.</p><strong id="help-extraction-mode">Extrator local</strong></article><article class="panel architecture-card"><span>04</span><h2>Validação</h2><p>Java confere os campos, a data de emissão e o nome informado. O resultado e as regras são salvos no banco.</p><strong>Spring Boot + banco</strong></article></div>
-        <div class="help-grid"><section class="panel help-panel"><h2>Teste em três passos</h2><ol class="numbered-list"><li>Baixe o comprovante fictício pelo botão <strong>Baixar exemplo</strong>.</li><li>Em <strong>Documentos</strong>, informe <strong>Ana Silva</strong> como titular e selecione o PDF.</li><li>Clique em <strong>Processar documento</strong> e confira os dados e as regras do resultado.</li></ol></section><section class="panel help-panel"><h2>Antes de enviar</h2><p>O documento precisa trazer nome, CPF, endereço e uma data de emissão recente. Informe o nome completo do titular para a comparação.</p><p>Uma reprovação mostra quais regras falharam. Corrija o arquivo ou os dados do envio e tente novamente.</p></section></div>
+        <div class="page-heading"><div><div class="eyebrow">APOIO <span>/</span> COMO FUNCIONA</div><h1>Do arquivo ao resultado<span class="heading-dot">.</span></h1><p>Entenda o que conferimos e como ler o resultado.</p></div><a class="button button-sample" href="/api/exemplo.pdf" download><svg><use href="#i-download"/></svg>Baixar exemplo</a></div>
+        <div class="panel help-intro"><span class="help-intro-icon"><svg><use href="#i-shield"/></svg></span><div><h2>Você envia. A gente ajuda a conferir.</h2><p>Conferimos os dados encontrados, a data de emissão e o nome informado. O resultado fica no histórico deste computador para você consultar.</p></div></div>
+        <div class="architecture-grid"><article class="panel architecture-card"><span>01</span><h2>Documento</h2><p>Você envia um PDF, PNG ou JPG e informa o nome do titular. O servidor verifica o formato e os limites.</p><strong>Escolha</strong></article><article class="panel architecture-card"><span>02</span><h2>Leitura</h2><p>OpenCV prepara as imagens e Tesseract reconhece o texto. PDFs com texto selecionável podem ser lidos diretamente.</p><strong>OpenCV + Tesseract</strong></article><article class="panel architecture-card"><span>03</span><h2>Extração</h2><p>O texto é organizado em campos: nome, CPF, endereço, cidade, UF e emissão. Campos não encontrados ficam vazios.</p><strong id="help-extraction-mode">Extrator local</strong></article><article class="panel architecture-card"><span>04</span><h2>Validação</h2><p>Java confere os campos, a data de emissão e o nome informado. O resultado e as regras são salvos no banco.</p><strong>Spring Boot + banco</strong></article></div>
+        <div class="help-grid"><section class="panel help-panel"><h2>Teste em três passos</h2><ol class="numbered-list"><li>Baixe o comprovante fictício pelo botão <strong>Baixar exemplo</strong>.</li><li>Em <strong>Conferir documento</strong>, informe <strong>Ana Silva</strong> como titular e selecione o PDF.</li><li>Clique em <strong>Conferir meu documento</strong> e confira os dados e as regras do resultado.</li></ol></section><section class="panel help-panel"><h2>Antes de enviar</h2><p>O documento precisa trazer nome, CPF, endereço e uma data de emissão recente. Informe o nome completo do titular para a comparação.</p><p>Uma reprovação mostra o que não passou na conferência. Confira a leitura, envie uma imagem mais nítida ou use um comprovante recente. Não altere os dados do documento original.</p></section></div>
         <section class="panel help-panel mode-panel"><div><span class="subtle-tag">CONFIGURAÇÃO ATUAL</span><h2 id="mode-title">Carregando configuração…</h2><p id="mode-description">Consultando o serviço de validação.</p></div><span class="mode-chip" id="mode-chip">—</span></section>
       </section>
-      <footer class="page-footer"><span>ValidaDoc <span>·</span> Projeto de mentoria 2026.2</span><span>Feito para simplificar cada etapa.</span></footer>
+      <footer class="page-footer"><span>ValidaDoc <span>·</span> Seu assistente de documentos</span><span>Projeto acadêmico · Uso pessoal</span></footer>
     </main>
   </div>
 </body>

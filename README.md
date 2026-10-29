@@ -1,6 +1,8 @@
 # ValidaDoc
 
-Projeto de mentoria para enviar comprovantes de residência, extrair os campos e conferir regras em Java. Inclui interface em português, upload de PDF/PNG/JPG, OCR real com OpenCV e Tesseract, resultado detalhado e histórico no banco.
+Assistente pessoal para conferir um comprovante de residência antes de usá-lo em um cadastro. A pessoa envia PDF/PNG/JPG, vê os dados que foram lidos e entende quais pontos precisam de atenção. Inclui OCR com OpenCV/Tesseract, regras em Java e histórico local. A conferência não comprova autenticidade nem garante aceitação por outra instituição.
+
+A identidade visual foi escolhida para uso pessoal: violeta nas ações, verde-água na leitura, coral nas orientações e textos diretos. O projeto continua sendo desenvolvido na mentoria, com os mesmos endpoints e critérios de validação.
 
 O modo padrão usa um extrator local por rótulos e não precisa de chave de IA. Há integração opcional com a OpenAI e perfil PostgreSQL. O código da aplicação fica em [`src`](src).
 
@@ -42,7 +44,7 @@ Nesse caso, abra `http://localhost:8081`.
 
 1. Na tela inicial, clique em **Baixar exemplo**.
 2. Informe **Ana Silva** no campo **Nome do titular**.
-3. Selecione o PDF baixado e clique em **Processar documento**.
+3. Selecione o PDF baixado e clique em **Conferir meu documento**.
 4. Confira os campos, as regras avaliadas e o texto extraído.
 5. Abra **Meus envios** para consultar o resultado novamente.
 
