@@ -80,6 +80,13 @@ Não deixar mudanças prontas escondidas para publicá-las como se tivessem sido
 - Revisadas cinco telas em cinco larguras (320 a 1536 px). Corrigido o transbordamento do nome do método de extração no relatório; as 25 combinações passaram, assim como a navegação e o fechamento do menu com Escape.
 - Implementação com assistência de IA. Para estudar: localizar a estrutura em `index.html`, o tema em `personal.css` e a atualização da etapa ativa em `app.js`.
 
+### 16/11/2026 — CPF com separador de igualdade
+
+- Problema reproduzido: `CPF=12345678900` não era lido, embora outros campos já aceitassem `=`. O rótulo compartilhado `CPF / CNPJ` tinha a mesma limitação.
+- Correção: permitir `:` ou `=` no rótulo do CPF, preservando a leitura sem separador.
+- Seis casos novos cobrem rótulos, separação de campos na mesma linha, CNPJ, CPF mascarado e telefone. Três falharam antes; depois, os 31 testes do extrator passaram.
+- Implementação com assistência de IA. Para explicar: `[:=]?` aceita um dos dois sinais ou nenhum; o restante da expressão continua exigindo 11 dígitos.
+
 ### Modelo para os próximos registros
 
 Copiar somente quando a atividade ocorrer e preencher com o resultado real:

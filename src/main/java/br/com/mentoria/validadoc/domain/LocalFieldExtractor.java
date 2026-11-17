@@ -27,7 +27,7 @@ public class LocalFieldExtractor {
     private static final Pattern DATE = Pattern.compile("(?<!\\d)(\\d{2}/\\d{2}/\\d{4}|\\d{2}-\\d{2}-\\d{4}|\\d{4}-\\d{2}-\\d{2})(?!\\d)");
     private static final String CPF_LABEL = "CPF(?:\\s*/\\s*CNPJ)?";
     private static final Pattern LABELED_CPF = Pattern.compile(
-            "(?<![\\p{L}\\d])" + CPF_LABEL + "\\s*:?\\s*(\\d{3}[.\\s]?\\d{3}[.\\s]?\\d{3}[-\\s]?\\d{2})(?!\\d)", FLAGS);
+            "(?<![\\p{L}\\d])" + CPF_LABEL + "\\s*[:=]?\\s*(\\d{3}[.\\s]?\\d{3}[.\\s]?\\d{3}[-\\s]?\\d{2})(?!\\d)", FLAGS);
     private static final Pattern FORMATTED_CPF = Pattern.compile(
             "(?<![\\d.])\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}(?![\\d/])");
     private static final Pattern CITY_STATE = Pattern.compile(

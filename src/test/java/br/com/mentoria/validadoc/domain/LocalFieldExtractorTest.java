@@ -12,6 +12,21 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 class LocalFieldExtractorTest {
     private final LocalFieldExtractor extractor = new LocalFieldExtractor();
 
+    @ParameterizedTest
+    @ValueSource(strings = {"CPF=12345678900", "cpf = 12345678900", "CPF / CNPJ = 12345678900"})
+    void acceptsEqualsSeparatorForCpf(String field) {
+        DadosDocumento result = extractor.extract("Nome=Ana Silva " + field + " Cidade=Recife");
+        assertEquals("Ana Silva", result.nome());
+        assertEquals("12345678900", result.cpf());
+        assertEquals("Recife", result.cidade());
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"CPF=12345678000190", "CPF/CNPJ=***.456.789-**", "Telefone=11987654321"})
+    void equalsSeparatorDoesNotTurnOtherNumbersIntoCpf(String field) {
+        assertNull(extractor.extract(field).cpf());
+    }
+
     @Test
     void separatesInlineSharedCpfCnpjLabelFromOwnerName() {
         DadosDocumento result = extractor.extract("Nome: Ana Silva CPF/CNPJ: 12345678900 Cidade: Recife");
