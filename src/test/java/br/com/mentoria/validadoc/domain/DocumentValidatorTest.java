@@ -19,6 +19,29 @@ class DocumentValidatorTest {
     private static final Clock CLOCK = Clock.fixed(Instant.parse("2026-10-26T15:00:00Z"), ZoneId.of("America/Fortaleza"));
     private final DocumentValidator validator = new DocumentValidator(CLOCK, 90);
 
+    @ParameterizedTest
+    @ValueSource(strings = {"912345678900", "123456789009", "9123456789009"})
+    void rejectsCpfEvidenceThatIsOnlyPartOfALongerNumber(String longerNumber) {
+        DadosDocumento dados = document(TODAY);
+        String source = text(dados).replace(dados.cpf(), longerNumber);
+        assertFalse(rule(validator.validate(dados, source, dados.nome()), "LEGIBILIDADE").aprovada());
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"12345678900", "123.456.789-00", "123 456 789 00"})
+    void acceptsCompleteCpfEvidenceWithSupportedFormatting(String cpf) {
+        DadosDocumento dados = document(TODAY);
+        String source = text(dados).replace(dados.cpf(), cpf);
+        assertTrue(rule(validator.validate(dados, source, dados.nome()), "LEGIBILIDADE").aprovada());
+    }
+
+    @Test
+    void findsCompleteCpfEvenWhenALongerNumberAlsoAppears() {
+        DadosDocumento dados = document(TODAY);
+        String source = "Protocolo: 9123456789009\n" + text(dados);
+        assertTrue(rule(validator.validate(dados, source, dados.nome()), "LEGIBILIDADE").aprovada());
+    }
+
     @Test
     void approvesRecentDocumentAndNormalizesHolderName() {
         DadosDocumento dados = document(TODAY.minusDays(10));

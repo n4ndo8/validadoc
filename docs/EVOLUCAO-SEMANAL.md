@@ -87,6 +87,15 @@ Não deixar mudanças prontas escondidas para publicá-las como se tivessem sido
 - Seis casos novos cobrem rótulos, separação de campos na mesma linha, CNPJ, CPF mascarado e telefone. Três falharam antes; depois, os 31 testes do extrator passaram.
 - Implementação com assistência de IA. Para explicar: `[:=]?` aceita um dos dois sinais ou nenhum; o restante da expressão continua exigindo 11 dígitos.
 
+### 16/11/2026 — Evidência de CPF completo no texto
+
+- Problema reproduzido: o campo extraído `12345678900` era considerado apoiado pelo texto mesmo quando este só continha `9123456789009`. A comparação anterior procurava uma substring.
+- Correção: após remover os separadores de formatação já aceitos, exigir que não haja outro dígito imediatamente antes ou depois do CPF encontrado.
+- Sete novos casos verificam dígitos extras antes/depois, CPF com e sem pontuação, espaços e presença simultânea de um protocolo maior e um CPF completo. Os três casos de número maior falharam antes da correção.
+- Suíte completa após as duas melhorias de hoje: 94 testes aprovados, sem falhas, erros ou testes ignorados (`mvn test`).
+- Esta mudança melhora a regra de evidência (`LEGIBILIDADE`); não adiciona consulta cadastral ou cálculo de dígitos verificadores.
+- Implementação com assistência de IA. Para explicar: procurar uma substring encontra pedaços de números; os limites numéricos exigem a sequência completa.
+
 ### Modelo para os próximos registros
 
 Copiar somente quando a atividade ocorrer e preencher com o resultado real:

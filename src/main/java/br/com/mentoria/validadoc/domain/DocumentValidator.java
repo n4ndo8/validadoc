@@ -103,8 +103,13 @@ public class DocumentValidator {
                 return false;
             }
         }
-        if (document.cpf() != null && !text.replaceAll("[.\\-\\s]", "").contains(document.cpf())) {
-            return false;
+        if (document.cpf() != null) {
+            String compactText = text.replaceAll("[.\\-\\s]", "");
+            // O CPF deve aparecer inteiro, não como um trecho de um número maior.
+            Pattern completeCpf = Pattern.compile("(?<!\\d)" + Pattern.quote(document.cpf()) + "(?!\\d)");
+            if (!completeCpf.matcher(compactText).find()) {
+                return false;
+            }
         }
         return document.dataEmissao() == null || text.contains(document.dataEmissao().format(BR_DATE))
                 || text.contains(document.dataEmissao().format(DateTimeFormatter.ofPattern("dd-MM-uuuu")))
